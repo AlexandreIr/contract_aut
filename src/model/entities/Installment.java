@@ -5,12 +5,14 @@ import java.time.LocalDate;
 public class Installment {
 	private LocalDate dueDate;
 	private double amount;
+	private int installmentNumber;
 	
 	public Installment() {}
 
-	public Installment(LocalDate dueDate, double amount) {
+	public Installment(LocalDate dueDate, double amount, int installmentNumber) {
 		this.dueDate = dueDate;
 		this.amount = amount;
+		this.installmentNumber = installmentNumber;
 	}
 
 	public LocalDate getDueDate() {
@@ -27,5 +29,13 @@ public class Installment {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+	
+	public int getinstallmentNumber() {
+		return installmentNumber;
+	}
+
+	public void setinstallmentNumber(int installmentNumber) {
+		this.installmentNumber = installmentNumber;
 	}
 }
