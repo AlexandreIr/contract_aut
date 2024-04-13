@@ -2,12 +2,12 @@ package app;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Scanner;
 
 import model.entities.Contract;
 import model.entities.Installment;
 import model.services.ContractService;
+import model.services.PaypalService;
 
 public class App {
 	public static void main(String[] args) {
@@ -24,16 +24,17 @@ public class App {
 		sc.nextLine();
 		System.out.print("Número de parcelas: ");
 		int instNumb = sc.nextInt();
-		
-		Contract contract = new Contract(number, date, contractValue);
-		ContractService cs = new ContractService();
-		List<Installment> installments = cs.processContract(contract, instNumb);
 
-		for(Installment inst :installments) {
-			System.out.println("Parcela #"+inst.getinstallmentNumber()+":");
-			System.out.println("Data de vencimento: "+dtf.format(inst.getDueDate())+" - "+"Valor: "+inst.getAmount());
+		Contract contract = new Contract(number, date, contractValue);
+		ContractService cs = new ContractService(new PaypalService());
+		cs.processContract(contract, instNumb);
+
+		for (Installment inst : contract.getInstallmentes()) {
+			System.out.println("Parcela #" + inst.getinstallmentNumber() + ":");
+			System.out.println(
+					"Data de vencimento: " + dtf.format(inst.getDueDate()) + " - " + "Valor: " + inst.getAmount());
 		}
-		
+
 		sc.close();
 	}
 }

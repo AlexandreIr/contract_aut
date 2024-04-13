@@ -6,8 +6,9 @@ public class Installment {
 	private LocalDate dueDate;
 	private double amount;
 	private int installmentNumber;
-	
-	public Installment() {}
+
+	public Installment() {
+	}
 
 	public Installment(LocalDate dueDate, double amount, int installmentNumber) {
 		this.dueDate = dueDate;
@@ -30,7 +31,7 @@ public class Installment {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
+
 	public int getinstallmentNumber() {
 		return installmentNumber;
 	}
