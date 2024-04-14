@@ -29,7 +29,7 @@ public class ContractService {
 			double contractWithInterest = onlinePaymentService.interest(contractWithFee, i);
 			LocalDate dueDate = contract.getDate().plusMonths(i);
 			Installment isnt = new Installment(dueDate, contractWithInterest, i);
-			contract.addInstallment(isnt);
+			contract.getInstallmentes().add(isnt);
 		}
 
 	}

@@ -1,11 +1,14 @@
 package model.services;
 
 public class PaypalService implements OnlinePaymentService {
-	public double paymentFee(double amount) {
-		return amount * 1.02;
+	private final double INTERESTRATE=0.01;
+	private final double PAYMENTFEE=1.02;
+	
+	public double getINTERESTRATE() {
+		return INTERESTRATE;
 	}
 
-	public double interest(double amount, int month) {
-		return amount + (amount * (0.01 * month));
+	public double getPAYMENTFEE() {
+		return PAYMENTFEE;
 	}
 }
